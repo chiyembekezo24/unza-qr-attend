@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -65,7 +64,7 @@ export const QrScanner: React.FC<QrScannerProps> = ({ onClose, onScan }) => {
     setStudentInfo(mockStudentData);
     
     // Record attendance
-    recordAttendance(mockStudentData);
+    recordAttendance(mockStudentData, qrData);
     
     toast({
       title: "Student Card Scanned!",
@@ -73,7 +72,7 @@ export const QrScanner: React.FC<QrScannerProps> = ({ onClose, onScan }) => {
     });
   };
 
-  const recordAttendance = (student: any) => {
+  const recordAttendance = (student: any, qrData: string) => {
     const attendanceRecord = {
       ...student,
       timestamp: new Date().toISOString(),
